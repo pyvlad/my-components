@@ -1,9 +1,23 @@
-require('./main.css')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter as Router } from 'react-router-dom'
 
-const React = require('react')
-const ReactDOM = require ('react-dom')
+require("./main.css")
+
+import Header from './header.jsx'
+import Content from './content.jsx'
+
+const App = () => (
+  <div className="container">
+    <h1>My Components App</h1>
+    <Header />
+    <Content />
+  </div>
+)
 
 ReactDOM.render(
-    <h1>Hello, Oh World!</h1>,
-    document.getElementById('root')
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
 )
