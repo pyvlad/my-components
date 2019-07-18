@@ -4,7 +4,7 @@ module.exports = {
   output: {
     // the public URL address of the output files when referenced in a browser:
     publicPath: "/assets/", 
-    path: __dirname + '/dist/assets',
+    path: __dirname + '/docs/assets',
     filename: 'bundle.js'
   },
   devtool: '#sourcemap',
