@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack -w",
-    "start": "./node_modules/node-static/bin/cli.js",
+    "build": "rm -rf dist && cp -r public dist && ./node_modules/.bin/webpack -w",
+    "start": "./node_modules/node-static/bin/cli.js dist",
     "dev-start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.config.js"
   },
   "keywords": [],

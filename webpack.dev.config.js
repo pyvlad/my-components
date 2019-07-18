@@ -7,8 +7,9 @@ module.exports = {
     './src/app.jsx'
   ],
   output: {
-    publicPath: "js/",
-    path: __dirname + '/js/',
+    publicPath: "/assets/",
+    // doesn't write to disk:
+    path: __dirname + '/dist/assets',
     filename: 'bundle.js'
   },
   devtool: '#sourcemap',
@@ -33,6 +34,7 @@ module.exports = {
     ]
   },
   devServer: {
+    contentBase: "./public",
     hot: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()] // include the HMR plugin

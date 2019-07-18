@@ -2,7 +2,9 @@ module.exports = {
   mode: "production",
   entry: './src/app.jsx',
   output: {
-    path: __dirname + '/js',
+    // the public URL address of the output files when referenced in a browser:
+    publicPath: "/assets/", 
+    path: __dirname + '/dist/assets',
     filename: 'bundle.js'
   },
   devtool: '#sourcemap',
