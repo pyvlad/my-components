@@ -87,57 +87,70 @@ class Timer extends React.Component {
     }
     render() {
         let percentLeft = Math.floor(100 * this.state.secondsLeft / this.state.timerTotal)
-        return (
-            <div>
-                <div className="row m-3">
-                    <div className="col-4 text-center">
-                        <Button time={5} startTimer={this.startTimer}/>
-                    </div>
-                    <div className="col-4 text-center">
-                        <Button time={10} startTimer={this.startTimer}/>
-                    </div>
-                    <div className="col-4 text-center">
-                        <Button time={15} startTimer={this.startTimer}/>
-                    </div>
+        return <TimerWidget startTimer={this.startTimer} 
+                            pauseTimer={this.pauseTimer}
+                            resumeTimer={this.resumeTimer}
+                            stopTimer={this.stopTimer}
+
+                            startedTime={this.state.startedTime}
+                            percentLeft={percentLeft} 
+                            secondsLeft={this.state.secondsLeft} 
+                            offset={this.state.offset} />
+    }
+}
+
+
+const TimerWidget = (props) => {
+    return (
+        <div>
+            <div className="row m-3">
+                <div className="col-4 text-center">
+                    <Button time={5} startTimer={props.startTimer}/>
                 </div>
-                <ProgressBar percentLeft={percentLeft} />
-                <h1 className="text-center">
-                    {
-                        this.state.secondsLeft ? 
-                        <Countdown secondsLeft={Number(this.state.secondsLeft.toFixed(1))} /> : 
-                        "-"
-                    }
-                </h1>
-                <audio id="end-of-time" src={AudioFile} preload="auto"></audio>
-                <div className="row">
-                    <div className="col-6 text-center">
-                        {   
-                            ((running, offset) => {
-                                if (!running && !offset) {
-                                    return ""
-                                } else if (running) {
-                                    return <PauseButton pause={this.pauseTimer} />
-                                } else if (offset) {
-                                    return <ResumeButton resume={this.resumeTimer} />
-                                }
-                            })(this.state.startedTime, this.state.offset)
-                        }
-                    </div>
-                    <div className="col-6 text-center">
-                        {
-                            ((running, offset) => {
-                                if (!running && !offset) {
-                                    return ""
-                                } else {
-                                    return <CancelButton stop={this.stopTimer} />
-                                }
-                            })(this.state.startedTime, this.state.offset)
-                        }
-                    </div>
+                <div className="col-4 text-center">
+                    <Button time={10} startTimer={props.startTimer}/>
+                </div>
+                <div className="col-4 text-center">
+                    <Button time={15} startTimer={props.startTimer}/>
                 </div>
             </div>
-        )
-    }
+            <ProgressBar percentLeft={props.percentLeft} />
+            <h1 className="text-center">
+                {
+                    props.secondsLeft ? 
+                    <Countdown secondsLeft={Number(props.secondsLeft.toFixed(1))} /> : 
+                    "-"
+                }
+            </h1>
+            <audio id="end-of-time" src={AudioFile} preload="auto"></audio>
+            <div className="row">
+                <div className="col-6 text-center">
+                    {   
+                        ((running, offset) => {
+                            if (!running && !offset) {
+                                return ""
+                            } else if (running) {
+                                return <PauseButton pause={props.pauseTimer} />
+                            } else if (offset) {
+                                return <ResumeButton resume={props.resumeTimer} />
+                            }
+                        })(props.startedTime, props.offset)
+                    }
+                </div>
+                <div className="col-6 text-center">
+                    {
+                        ((running, offset) => {
+                            if (!running && !offset) {
+                                return ""
+                            } else {
+                                return <CancelButton stop={props.stopTimer} />
+                            }
+                        })(props.startedTime, props.offset)
+                    }
+                </div>
+            </div>
+        </div>
+    )
 }
 
 
