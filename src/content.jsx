@@ -6,22 +6,18 @@ import Timer from './timer/timer.jsx'
  
 const Index = () => <h2>Home</h2>
 const ClockPage = () => (
-    <div>
+    <div className="container">
         <h2>Check out my fancy clock:</h2>
         <div className="row">
-            <div style={{margin: 10}}>
-                <Clock fgColor="lightgrey" bgColor="darkgrey" clockSize={200}/>
-            </div>
+            <Clock clockSize={200}/>
         </div>
     </div>
 )
 const TimerPage = () => (
-    <div>
+    <div className="container">
         <h2>Check out my fancy timer:</h2>
         <div className="row">
-            <div style={{margin: 10}}>
-                <Timer />
-            </div>
+            <Timer />
         </div>
     </div>
 )

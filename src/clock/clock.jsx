@@ -49,7 +49,6 @@ class Clock extends React.Component {
 
     launchClock() {
         this.timer = setInterval( () => {
-            console.log("Updating time...")
             this.setState({
                 currentTime: new Date()
             })
@@ -61,7 +60,8 @@ class Clock extends React.Component {
             <div style={{ 
                 width: this.props.clockSize * 1.5, 
                 backgroundColor: this.props.fgColor, 
-                color: this.props.bgColor 
+                color: this.props.bgColor,
+                borderRadius: 10
             }}>
                 <AnalogDisplay 
                     time={ this.state.currentTime.toISOString() }
