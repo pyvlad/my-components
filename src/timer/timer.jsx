@@ -5,7 +5,7 @@ import { Button, PauseButton, ResumeButton, CancelButton } from "./buttons.jsx"
 import Countdown from "./countdown.jsx"
 import ProgressBar from "./progressbar.jsx"
 
-// TODO there is a leak - find and remove
+
 class Timer extends React.Component {
     constructor(props) {
         super(props)
@@ -81,6 +81,9 @@ class Timer extends React.Component {
         if (this.state.secondsLeft <= 0 && this.state.secondsLeft != null) {
             document.getElementById('end-of-time').play()
         }
+    }
+    componentWillUnmount() {
+        clearInterval(this.activeTimer)
     }
     render() {
         let percentLeft = Math.floor(100 * this.state.secondsLeft / this.state.timerTotal)
