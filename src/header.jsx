@@ -12,7 +12,7 @@ const Header = () => (
                     <NavLink className="nav-link" to="/clock">Clock</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/page2">Page2</NavLink>
+                    <NavLink className="nav-link" to="/timer">Timer</NavLink>
                 </li>
             </ul>
         </div>
