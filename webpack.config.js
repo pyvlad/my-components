@@ -3,7 +3,7 @@ module.exports = {
   entry: './src/app.jsx',
   output: {
     // the public URL address of the output files when referenced in a browser:
-    publicPath: "/assets/", 
+    publicPath: "assets/", 
     path: __dirname + '/docs/assets',
     filename: 'bundle.js'
   },
