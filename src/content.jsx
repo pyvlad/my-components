@@ -25,18 +25,12 @@ const TimerPage = () => (
 )
 const TablePage = () => {
     // TODO: move this to fetched JSON
+    const dataUrl = "programmers.json"
     const columns = ["first_name", "last_name"]
-    const data = [
-        {"first_name": "Guido", "last_name": "van Rossum"},
-        {"first_name": "Linus", "last_name": "Torwalds"},
-        {"first_name": "Dennis", "last_name": "Ritchie"},
-        {"first_name": "Bryan", "last_name": "Kernighan"},
-        {"first_name": "Ken", "last_name": "Thompson"}
-    ]
     return (
         <div>
             <h2>Check out this table with famous programmers:</h2>
-            <TableWrapper columns={columns} data={data} />
+            <TableWrapper columns={columns} dataUrl={dataUrl} />
         </div>
     )
 }

@@ -7,10 +7,18 @@ import NewRow from './new-row.jsx'
 class TableWrapper extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {rows: props.data}
+        this.state = {rows: []}
 
         this.removeRow = this.removeRow.bind(this)
         this.handleNewRow = this.handleNewRow.bind(this)
+    }
+    componentDidMount() {
+        fetch(this.props.dataUrl)
+            .then((response)=>response.json())
+            .then((data)=>this.setState({rows: data}))
+            .catch(function(error) {
+                console.log('A problem with your fetch operation: ' + error.message)
+            })
     }
     removeRow(rowIndex) {
         const {rows} = this.state
